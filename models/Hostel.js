@@ -17,7 +17,7 @@ const HostelSchema = new mongoose.Schema ({
     type: String,
     required:true
   },
-  disteance: {
+  distance: {
     type: String,
     required:true
   },
