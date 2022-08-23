@@ -4,8 +4,7 @@ import Hostel from "../models/Hostel.js";
 
 const router = express.Router ();
 
-//CREATE
-
+//CREATE 
 router.post("/", async (req, res) =>{
 
   const newHostel = new Hostel(req.body)
@@ -18,7 +17,7 @@ router.post("/", async (req, res) =>{
 });
 
 
-//UPDATE
+//UPDATE 
 
 router.put("/:id", async (req, res) =>{
    
@@ -26,8 +25,8 @@ router.put("/:id", async (req, res) =>{
     const updatedHostel = await Hostel.findByIdAndUpdate(
       req.params.id, 
       { $set: req.body }, 
-      { new: true }
-      );
+      { new: true }     
+      ); 
     res.status(200).json(updatedHostel)
   }catch (err){
     res.status(500).json(err)
@@ -62,13 +61,13 @@ router.get("/:id", async (req, res) =>{
 
 //GET ALL
 
-router.get("/", async (req, res) =>{
+router.get("/", async (req, res, next) =>{
   try{
     const hostels = await Hostel.find()
     res.status(200).json(hostels)
 
   }catch (err){
-    res.status(500).json(err)
+    next(err)
 
   }
 });
