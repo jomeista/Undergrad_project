@@ -1,6 +1,7 @@
+import Hostel from "../models/Hostel.js";
 //CREATE 
 export const createHostel = async (req, res, next) =>{
-  const newHostel = new Hostel(req.body)
+  const newHostel = new Hostel(req.body);
   try {
     const savedHostel = await newHostel.save()
     res.status(200).json(savedHostel)
