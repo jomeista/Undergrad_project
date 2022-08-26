@@ -1,76 +1,20 @@
 import express from "express";
+import  { createHostel, deleteHostel, getHostel, getHostels, updateHostel }  from "../controllers/hostel.js";
 import Hostel from "../models/Hostel.js";
 
 
 const router = express.Router ();
 
-//CREATE 
-router.post("/", async (req, res) =>{
+//ROUTES
+router.post("/", createHostel) //CREATE
 
-  const newHostel = new Hostel(req.body)
-  try {
-    const savedHostel = await newHostel.save()
-    res.status(200).json(savedHostel)
-  }catch(err){
-    res.status(500).json(err)
-  }
-});
+router.put("/:id", updateHostel) //UPDATE
 
+router.delete("/:id", deleteHostel) //DELETE
 
-//UPDATE 
+router.get("/:id", getHostel) //GET
 
-router.put("/:id", async (req, res) =>{
-   
-  try{
-    const updatedHostel = await Hostel.findByIdAndUpdate(
-      req.params.id, 
-      { $set: req.body }, 
-      { new: true }     
-      ); 
-    res.status(200).json(updatedHostel)
-  }catch (err){
-    res.status(500).json(err)
-  }
-})
-
-
-//DELETE
-
-router.delete("/:id", async (req, res) =>{
-  try{
-    await Hostel.findByIdAndDelete(req.params.id)
-    res.status(200).json("Hostel has been deleted!")
-  }catch (err){
-    res.status(500).json(err)
-  }
-});
-
-
-//GET
-
-router.get("/:id", async (req, res) =>{
-  try{
-
-    const hostel = await Hostel.findById(req.params.id)
-    res.status(200).json(hostel)
-  }catch (err){
-    res.status(500).json(err)
-
-  } 
-});
-
-//GET ALL
-
-router.get("/", async (req, res, next) =>{
-  try{
-    const hostels = await Hostel.find()
-    res.status(200).json(hostels)
-
-  }catch (err){
-    next(err)
-
-  }
-});
+router.get("/", getHostels) //GETALL
 
 
 export default router

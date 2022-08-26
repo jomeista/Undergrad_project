@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import userRoute from "./routes/users.js"
-import authRoute from "./routes/auth.js"
-import hostelRoute from "./routes/hostel.js"
-import roomsRoute from "./routes/rooms.js"
+import userRoute from "../HOSTELAPP/routes/users.js"
+import authRoute from "../HOSTELAPP/routes/auth.js"
+import hostelRoute from "../HOSTELAPP/routes/hostel.js"
+import roomsRoute from "../HOSTELAPP/routes/rooms.js"
 
 const app = express();
 dotenv.config();
@@ -16,6 +16,7 @@ const connect = async () => {
     console.log("Connected to MongoDB.");
     
   } catch (error) {
+    
     throw error
   }
 };
