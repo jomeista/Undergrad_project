@@ -1,6 +1,8 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import { createError } from "./utils/error.js";
+import  Jwt  from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 
 //REGISTER
 export const register = async (req, res, next) =>{
@@ -39,9 +41,15 @@ export const login = async (req, res, next) =>{
    if(!isPasswordCorrect) 
    return next(createError(404, "Wrong username or password!"));
 
-   const {password, isAdmin, ...otherDetails} = user._doc;
+   //JWT
+   const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin}, process.env.JWT);
 
-   res.status(200).json({...otherDetails});
+   const {password, isAdmin, ...otherDetails} = user._doc;
+   res.
+   cookie("access-token", token, {
+    httpOnly: true,
+   })
+   .status(200).json({...otherDetails});
  
   } catch (err) {
     next(err)
