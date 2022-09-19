@@ -5,6 +5,7 @@ import userRoute from "../HOSTELAPP/routes/users.js";
 import authRoute from "../HOSTELAPP/routes/auth.js";
 import hostelRoute from "../HOSTELAPP/routes/hostel.js";
 import roomsRoute from "../HOSTELAPP/routes/rooms.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -23,6 +24,8 @@ const connect = async () => {
 };
 
 //middleware
+
+app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/users", userRoute);
