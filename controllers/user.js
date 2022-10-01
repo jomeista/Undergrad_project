@@ -1,4 +1,4 @@
-import user from "../models/user.js";
+import User from "../models/user.js";
 
 //UPDATE
 export const updateUser = async (req, res, next) =>{
@@ -43,7 +43,7 @@ export const getUser = async (req, res, next) =>{
 export const getUsers = async (req, res, next) =>{
   try{
     const user = await User.find()
-    res.status(200).json(users)
+    res.status(200).json(user)
 
   }catch (err){
     next(err)
