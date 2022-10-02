@@ -3,11 +3,11 @@ import {updateRoom, deleteRoom, getRoom, getRooms, createRoom} from "../controll
 
 const router = express.Router ();
 
-router.post("/:hotelId", createRoom) //CREATE
+router.post("/:hostelid", createRoom) //CREATE
 
 router.put("/:id", updateRoom) //UPDATE
 
-router.delete("/:id", deleteRoom) //DELETE
+router.delete("/:id/:hostelid", deleteRoom) //DELETE
 
 router.get("/:id", getRoom) //GET
 
