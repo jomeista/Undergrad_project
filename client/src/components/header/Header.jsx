@@ -38,23 +38,27 @@ const Header = () =>{
       </p>
       <button className="headerBtn">Sign In / Register</button>
       <div className="headerSearch">
-        <div className="heeaderSearchItem">
+        <div className="headerSearchItem">
           <FontAwesomeIcon icon={faBed} className="headerIcon" />
           <input 
             type="text"
-            placeholder="Where do you want to stay"
+            placeholder="Where are you staying?"
             className="headerSearchInput"
           />
         </div>
 
-        <div className="heeaderSearchItem">
+        <div className="headerSearchItem">
           <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
           <span className="headerSearchText">date to date</span>
         </div>
 
-        <div className="heeaderSearchItem">
+        <div className="headerSearchItem">
           <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-        <span>Rooms</span>
+        <span className="headerSearchText">Rooms</span>
+        </div>
+
+        <div className="headerSearchItem">
+         <button className="headerBtn">Search</button>
         </div>
       </div>
       </div>
