@@ -1,5 +1,5 @@
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faBed} from "@fortawesome/free-solid-svg-icons"
+import { faBed, faCalendarDays, faPerson} from "@fortawesome/free-solid-svg-icons"
 import "./Header.css";
 
 const Header = () =>{
@@ -37,6 +37,26 @@ const Header = () =>{
       <p className="headerDesc">Where there are no strangers, just friends you have not met yet.
       </p>
       <button className="headerBtn">Sign In / Register</button>
+      <div className="headerSearch">
+        <div className="heeaderSearchItem">
+          <FontAwesomeIcon icon={faBed} className="headerIcon" />
+          <input 
+            type="text"
+            placeholder="Where do you want to stay"
+            className="headerSearchInput"
+          />
+        </div>
+
+        <div className="heeaderSearchItem">
+          <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+          <span className="headerSearchText">date to date</span>
+        </div>
+
+        <div className="heeaderSearchItem">
+          <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+        <span>Rooms</span>
+        </div>
+      </div>
       </div>
     </div>
   )
