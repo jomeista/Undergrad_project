@@ -10,7 +10,21 @@ import "./Header.css";
 
 const Header = () =>{
 
-  const [openDate, setOpenDate] = useState(false)
+  const [openDate, setOpenDate] = useState(false);
+
+  const [openOptions, setOpenOptions] = useState(false)
+  const [options, setOPtions] = useState({
+    room:1
+  });
+
+  const handleOption = (room, operation) =>{
+    setOPtions((prev) =>{
+      return{
+      ...prev,
+      [room]: operation ==="i" ? options[room] + 1 : options[room] -1,
+    };
+    });
+  };
 //react date range
   const [date, setDate] = useState([
     {
@@ -79,7 +93,17 @@ const Header = () =>{
 
         <div className="headerSearchItem">
           <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-        <span className="headerSearchText">Rooms</span>
+        <span onClick={() =>setOpenOptions(!openOptions)} className="headerSearchText">{`${options.room} sharing`}</span>
+        { openOptions && <div className="options">
+          <div className="optionItem">
+            <span className="optiontext">room</span>
+            <div className="optionCounter">
+              <button disabled={options.room <= 1} className="optionCounterButton" onClick={() =>handleOption("room", "d")}>-</button>
+              <span className="optionCounterNum">{options.room}</span>
+              <button className="optionCounterButton" onClick={() =>handleOption("room", "i")}>+</button>
+            </div>
+          </div>
+        </div>}
         </div>
 
         <div className="headerSearchItem">
