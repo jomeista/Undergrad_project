@@ -9,6 +9,8 @@ import "./Header.css";
 
 
 const Header = () =>{
+
+  const [openDate, setOpenDate] = useState(false)
 //react date range
   const [date, setDate] = useState([
     {
@@ -64,15 +66,15 @@ const Header = () =>{
 
         <div className="headerSearchItem">
           <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-          <span className="headerSearchText"> {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
-          <DateRange
+          <span onClick={() =>setOpenDate(!openDate)} className="headerSearchText"> {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+          { openDate && <DateRange
            editableDateInputs={true}
            onChange={item => setDate([item.selection])}
            moveRangeOnFirstSelection={false}
            ranges={date}
            className="date"
 
-         />
+         />}
         </div>
 
         <div className="headerSearchItem">
