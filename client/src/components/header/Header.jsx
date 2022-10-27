@@ -8,7 +8,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./Header.css";
 
 
-const Header = () =>{
+const Header = ({type}) =>{
 
   const [openDate, setOpenDate] = useState(false);
 
@@ -36,7 +36,7 @@ const Header = () =>{
 
   return(
     <div className="header">
-    <div className="headerContainer">
+    <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
       <div className="headerList">
         <div className="headerListItem active">
         <FontAwesomeIcon icon= {faBed} />
@@ -64,6 +64,8 @@ const Header = () =>{
         </div>
       </div>
 
+      { type !== "list" &&
+        <>
       <h1 className="headerTitle">Student Housing, home away from home.</h1>
       <p className="headerDesc">Where there are no strangers, just friends you have not met yet.
       </p>
@@ -109,7 +111,8 @@ const Header = () =>{
         <div className="headerSearchItem">
          <button className="headerBtn">Search</button>
         </div>
-      </div>
+      </div></>
+    }
       </div>
     </div>
   )
