@@ -29,6 +29,15 @@ const PropertyList = () =>{
           <h2>10 rooms</h2>
         </div>
       </div>
+
+      <div className="pListItem">
+        <img className="pListImg"
+         src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/145445759.jpg?k=1196999d03ee08e78cb521f286f5edc60c10a188036ba74946fca70bdd798050&o=" alt="" />
+        <div className="pListTitles">
+          <h1>3 Double decker</h1>
+          <h2>10 rooms</h2>
+        </div>
+      </div>
     </div>
   )
 } 
