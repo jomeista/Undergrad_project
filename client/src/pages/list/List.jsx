@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { format } from "date-fns";
 import './list.css';
 import { DateRange } from "react-date-range";
+import SearchItem from "../../components/searchItem/SearchItem";
 
 
 const List = () =>{
@@ -72,9 +73,13 @@ const List = () =>{
           <button>Search</button>
         </div>
         <div className="listResult"></div>
+        <SearchItem />
       </div>
+     
     </div>
+    
     </div>
+    
   )
 }
 
