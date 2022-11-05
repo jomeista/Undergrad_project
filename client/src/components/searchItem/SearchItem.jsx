@@ -15,10 +15,10 @@ const SearchItem = () =>{
        <span className='siDistance'>500m from centre</span>
        <span className='siTaxiOp'>Free hostel bus</span>
        <span className='siSubtitle'>
-        Single bed romm with Magnificient view
+        Single bed room with Magnificient view
        </span>
        <span className='siFeatures'>
-        Entire studio • 1 bathroom • 1 full bed
+        Entire studio • reading desk • 1 full bed
        </span>
        <span className='siCancelOp'>Free cancellation</span>
        <span className='siCancelOpSubtitle'>
@@ -32,7 +32,7 @@ const SearchItem = () =>{
           <button>8.9</button>
         </div>
         <div className='siDetailsTexts'>
-          <span className='siPrice'>$120</span>
+          <span className='siPrice'>KSH 10,000</span>
           <span className='siTaxOp'>includes taxes and fees</span>
           <button className='siCheckButton'>See availability</button>
         </div>

@@ -9,7 +9,7 @@ const FeaturedProperties = () =>{
       <img className="fpImg" src={fProperty_1} alt=""/>
       <span className="fpName">Aparthostel Stare Miasto</span>
       <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from $120</span>
+      <span className="fpPrice">Starting from KSH 10,000</span>
       <div className="fpRating">
         <button>8.9</button>
         <span>Excellent</span>
@@ -20,7 +20,7 @@ const FeaturedProperties = () =>{
       <img className="fpImg" src={fProperty_1} alt=""/>
       <span className="fpName">Aparthostel Stare Miasto</span>
       <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from $120</span>
+      <span className="fpPrice">Starting from KSH 10,000</span>
       <div className="fpRating">
         <button>8.9</button>
         <span>Excellent</span>
@@ -31,7 +31,7 @@ const FeaturedProperties = () =>{
       <img className="fpImg" src={fProperty_1} alt=""/>
       <span className="fpName">Aparthostel Stare Miasto</span>
       <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from $120</span>
+      <span className="fpPrice">Starting from KSH 10,000</span>
       <div className="fpRating">
         <button>8.9</button>
         <span>Excellent</span>
@@ -42,7 +42,7 @@ const FeaturedProperties = () =>{
       <img className="fpImg" src={fProperty_1} alt=""/>
       <span className="fpName">Aparthostel Stare Miasto</span>
       <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from $120</span>
+      <span className="fpPrice">Starting from KSH 10,000</span>
       <div className="fpRating">
         <button>8.9</button>
         <span>Excellent</span>
