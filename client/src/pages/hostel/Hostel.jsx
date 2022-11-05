@@ -2,6 +2,8 @@ import React from "react";
 import "./hostel.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
+import MailList from "../../components/mailList/MailList";
+import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,6 +28,7 @@ const Hostel = () =>{
       <Header type="list"/>
       <div className="hostelContainer">
         <div className="hostelWrapper">
+        <button className="bookNow">Reserve or Book Now!</button>
           <h1 className="hostelTitle">Grand Hostel</h1>
           <div className="hostelAddress">
            <FontAwesomeIcon icon= { faLocationDot} />
@@ -68,6 +71,8 @@ const Hostel = () =>{
       </div>
       
     </div>
+    <MailList />
+    <Footer />
     </div>
   )
 }
