@@ -80,4 +80,26 @@ export const countByCity = async (req, res, next) =>{
 
 }
 
+//GET BY TYPE
+export const countByType = async (req, res, next) =>{
+  try{
+  const singleBedCount = await Hostel.countDocuments({type:"Single bed"});
+  const doubleBedCount = await Hostel.countDocuments({type:"Double bed"});
+  const doubleDeckerCount = await Hostel.countDocuments({type:"Double decker"});
+  const double_DeckerCount = await Hostel.countDocuments({type:"3 Double decker"});
+
+    res.status(200).json([
+      {type: "Single bed", count: singleBedCount},
+      {type: "Double bed ", count: doubleBedCount},
+      {type: "Double decker", count: doubleDeckerCount},
+      {type: "3 Double decker", count: double_DeckerCount},
+    ]);
+
+  }catch (err){
+    next(err)
+
+  }
+
+}
+
 
