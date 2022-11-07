@@ -1,4 +1,5 @@
 import Hostel from "../models/Hostel.js";
+
 //CREATE 
 export const createHostel = async (req, res, next) =>{
   const newHostel = new Hostel(req.body);
@@ -63,5 +64,20 @@ export const getHostels = async (req, res, next) =>{
 
 }
 
+//GET BY CITY
+export const countByCity = async (req, res, next) =>{
+  const cities = req.query.cities.split(",")
+  try{
+    const list = await Promise.all(cities.map(city =>{
+      return Hostel.countDocuments({city:city})
+    }))
+    res.status(200).json(list)
+
+  }catch (err){
+    next(err)
+
+  }
+
+}
 
 
