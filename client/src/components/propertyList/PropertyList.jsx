@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 
 const PropertyList = () =>{
 
-  const {data, loading, error,} = useFetch("/hostel/countByType");
+  const {data, loading,} = useFetch("/hostel/countByType");
 
   const images = [
     "https://i.pinimg.com/originals/73/1e/94/731e945958ba0e0d96881937f9671d19.jpg",
@@ -22,12 +22,12 @@ const PropertyList = () =>{
     {data &&
     images.map((img, i) =>(
 
-    <div className="pListItem">
+    <div className="pListItem" key={i}>
         <img className="pListImg" 
         src={img} alt="" />
         <div className="pListTitles">
-          <h1>{data[i].type}</h1>
-          <h2>{data[i].count} rooms</h2>
+          <h1>{data[i]?.type}</h1>
+          <h2>{data[i]?.count} rooms</h2>
         </div>
       </div>
       ))}
