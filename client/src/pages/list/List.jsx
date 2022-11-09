@@ -6,17 +6,20 @@ import { format } from "date-fns";
 import './list.css';
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
+import useFetch from "../../hooks/useFetch";
+
 
 
 const List = () =>{
 
   const location = useLocation();
 
-  const [destination, setDestination] = useState(location.state.destination)
-  const [date, setDate] = useState(location.state.date)
+  const [destination, setDestination] = useState(location.state.destination);
+  const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options)
+  const [options, setOptions] = useState(location.state.options);
 
+  const {data, loading, error, refetch} = useFetch (`/hostel?city=${location}`)
 
   console.log(location);
   return(
@@ -73,12 +76,12 @@ const List = () =>{
           <button>Search</button>
         </div>
         <div className="listResult">
-        <SearchItem />
-        <SearchItem />
-        <SearchItem />
-        <SearchItem />
-        <SearchItem />
-        <SearchItem />
+        {loading ? ("loading") : <>
+        {data.map(item =>(
+          <SearchItem item={item} key={item._id} />
+        ))}
+          
+        </>}
         
         </div>
         
