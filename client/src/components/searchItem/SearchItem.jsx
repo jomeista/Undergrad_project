@@ -31,10 +31,10 @@ const SearchItem = ({item}) =>{
           <button>{item.rating}</button>
         </div>}
         <div className='siDetailsTexts'>
-          <span className='siPrice'>KSH {item.cheapestPrice}</span>
+          <span className='siPrice'>KSH {item.CheapestPrice}</span>
           <span className='siTaxOp'>includes taxes and fees</span>
 
-          <Link to={`/hostels/${item._id}`}>
+          <Link to={`/hostel/${item._id}`}>
           <button className='siCheckButton'>See availability</button>
 
           </Link>

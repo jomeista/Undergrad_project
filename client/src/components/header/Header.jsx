@@ -1,12 +1,13 @@
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faBed, faCalendarDays, faPerson} from "@fortawesome/free-solid-svg-icons"
 import { DateRange } from 'react-date-range';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate} from 'react-router-dom';
 import {format} from "date-fns";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./Header.css";
+import { SearchContext } from "../../context/SearchContext";
 
 
 const Header = ({type}) =>{
@@ -31,12 +32,15 @@ const Header = ({type}) =>{
     });
   };
 
+  const {dispatch} = useContext(SearchContext)
+
   const handleSearch = ()=>{
-    navigate("/hostel", {state: { destination, date, options }});
+    dispatch({type:"NEW_SEARCH", payload: { destination, dates, options }});
+    navigate("/hostel", {state: { destination, dates, options }});
 
   };
 //react date range
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date (),
@@ -93,12 +97,12 @@ const Header = ({type}) =>{
 
         <div className="headerSearchItem">
           <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-          <span onClick={() =>setOpenDate(!openDate)} className="headerSearchText"> {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+          <span onClick={() =>setOpenDate(!openDate)} className="headerSearchText"> {`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
           { openDate && <DateRange
            editableDateInputs={true}
-           onChange={item => setDate([item.selection])}
+           onChange={item => setDates([item.selection])}
            moveRangeOnFirstSelection={false}
-           ranges={date}
+           ranges={dates}
            className="date"
            minDate ={new Date()}
 
