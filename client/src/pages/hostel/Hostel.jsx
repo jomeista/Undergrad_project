@@ -31,7 +31,7 @@ const Hostel = () =>{
     return diffDays;
   }
 
-  console.log(dayDifference(dates[0].startDate, dates[0].endDate));
+  const days = (dayDifference(dates[0].startDate, dates[0].endDate));
 
 
   const photos = [
@@ -88,7 +88,7 @@ const Hostel = () =>{
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
             <h2>
-              <b>KSH {data.CheapestPrice}</b>
+              <b>KSH { days * data.CheapestPrice}</b> ({days} days) 
             </h2>
             <button>Reserve or Book Now!</button>
           </div>
