@@ -8,6 +8,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import "./Header.css";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Header = ({type}) =>{
@@ -22,6 +23,8 @@ const Header = ({type}) =>{
 
   //React router 
   const navigate = useNavigate()
+
+  const {user} = useContext(AuthContext);
 
   const handleOption = (room, operation) =>{
     setOPtions((prev) =>{
@@ -83,7 +86,7 @@ const Header = ({type}) =>{
       <h1 className="headerTitle">Student Housing, home away from home.</h1>
       <p className="headerDesc">Where there are no strangers, just friends you have not met yet.
       </p>
-      <button className="headerBtn">Sign In / Register</button>
+      { !user &&  <button className="headerBtn">Sign In / Register</button>}
       <div className="headerSearch">
         <div className="headerSearchItem">
           <FontAwesomeIcon icon={faBed} className="headerIcon" />
