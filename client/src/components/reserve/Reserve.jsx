@@ -2,14 +2,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./reserve.css";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 const Reserve = ({setOpen, hostelId}) => {
 
   const [selectedRooms, setSelectedRooms] = useState([]);
 
   const { data, loading, error } = useFetch (`/rooms`);
+  const {dates} = useContext(SearchContext);
 
+  const getDatesInRange =  (startDate, endDate) =>{
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const date = new Date(start.getTime());
+
+    const dates = [];
+
+   
+    while (date <=end) {
+
+      dates.push(new Date(date));
+      date.setDate(date.getDate()+1);
+    }
+
+    return dates;
+  };
+
+  console.log(getDatesInRange(dates[0].startDate, dates[0].endDate));
+
+  
   const handleSelect = (e) =>{
     const checked = e.target.checked
     const value = e.target.value
@@ -19,7 +42,9 @@ const Reserve = ({setOpen, hostelId}) => {
       );
   };
 
-  console.log(selectedRooms);
+  const handleClick = () =>{
+
+  }
   return (
     <div className="reserve">
       <div className="rContainer">
@@ -43,10 +68,13 @@ const Reserve = ({setOpen, hostelId}) => {
             {item.roomNumbers.map(roomNumber =>(
               <div className="room">
               <label>{roomNumber.number}</label>
-              <input type="checkbox" value={roomNumber._id} onChange={handleSelect} />
+              <input 
+              type="checkbox" 
+              value={roomNumber._id} 
+              onChange={handleSelect} />
               </div>
             ))}
-          
+          <button className="rButton" onClick={handleClick}>Reserve Now!</button>
      
       </div>
       ))}
