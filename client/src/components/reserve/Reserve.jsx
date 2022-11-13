@@ -2,10 +2,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./reserve.css";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
+import { useState } from "react";
 
 const Reserve = ({setOpen, hostelId}) => {
 
-  const { data, loading, error } = useFetch (`/rooms`)
+  const [selectedRooms, setSelectedRooms] = useState([]);
+
+  const { data, loading, error } = useFetch (`/rooms`);
+
+  const handleSelect = (e) =>{
+    const checked = e.target.checked
+    const value = e.target.value
+    setSelectedRooms(
+      checked ? [...selectedRooms, value] : 
+      selectedRooms.filter(item => item !== value)
+      );
+  };
+
+  console.log(selectedRooms);
   return (
     <div className="reserve">
       <div className="rContainer">
@@ -23,8 +37,16 @@ const Reserve = ({setOpen, hostelId}) => {
           <div className="rMax">
           max people: <b>{item.maxPeople}</b>
           </div>
-
+          <div className="rPrice">{item.price}</div>
           </div>
+        
+            {item.roomNumbers.map(roomNumber =>(
+              <div className="room">
+              <label>{roomNumber.number}</label>
+              <input type="checkbox" value={roomNumber._id} onChange={handleSelect} />
+              </div>
+            ))}
+          
      
       </div>
       ))}
