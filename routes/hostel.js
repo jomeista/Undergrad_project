@@ -1,5 +1,5 @@
 import express from "express";
-import  { countByCity, countByType, createHostel, deleteHostel, getHostel, getHostels, updateHostel }  from "../controllers/hostel.js";
+import  { countByCity, getHostelRooms, countByType, createHostel, deleteHostel, getHostel, getHostels, updateHostel }  from "../controllers/hostel.js";
 // import Hostel from "../models/Hostel.js";
 
 
@@ -19,5 +19,6 @@ router.get("/", getHostels); //GETALL
 router.get("/", getHostels);
 router.get("/countByCity", countByCity);
 router.get("/countByType", countByType); 
+router.get("/room/:id", getHostelRooms); 
 
 export default router
