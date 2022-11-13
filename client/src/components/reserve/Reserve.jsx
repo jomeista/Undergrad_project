@@ -23,14 +23,24 @@ const Reserve = ({setOpen, hostelId}) => {
    
     while (date <=end) {
 
-      dates.push(new Date(date));
+      dates.push(new Date(date).getTime());
       date.setDate(date.getDate()+1);
     }
 
     return dates;
   };
 
-  console.log(getDatesInRange(dates[0].startDate, dates[0].endDate));
+  const alldates =(getDatesInRange(dates[0].startDate, dates[0].endDate));
+
+  const isAvailable = (roomNumber) =>{
+    const isFound = roomNumber.unavailableDates.some(date =>
+      alldates.include(new Date(date).getTime())
+      );
+
+      return !isFound
+  };
+
+
 
   
   const handleSelect = (e) =>{
@@ -71,7 +81,9 @@ const Reserve = ({setOpen, hostelId}) => {
               <input 
               type="checkbox" 
               value={roomNumber._id} 
-              onChange={handleSelect} />
+              onChange={handleSelect}
+              disabled={!isAvailable(roomNumber)}
+               />
               </div>
             ))}
           <button className="rButton" onClick={handleClick}>Reserve Now!</button>
