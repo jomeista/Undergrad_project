@@ -56,7 +56,7 @@ export const getHostel = async (req, res, next) =>{
 export const getHostels = async (req, res, next) =>{
   const {min, max, ...others} = req.query;
   try{
-    const hostels = await Hostel.find({...others, CheapestPrice: { $gt: min | 1, $lt:max || 999},});
+    const hostels = await Hostel.find({...others, CheapestPrice: { $gt: min | 1, $lt:max || 999},}).limit(req.query.limit);
     res.status(200).json(hostels)
 
   }catch (err){
@@ -65,6 +65,7 @@ export const getHostels = async (req, res, next) =>{
   }
 
 }
+
 
 //GET BY CITY
 export const countByCity = async (req, res, next) =>{

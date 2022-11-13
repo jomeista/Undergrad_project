@@ -5,7 +5,7 @@ const fProperty_1 = require('../img/fProperty1.jpg');
 
 const FeaturedProperties = () =>{
 
-  const {data, loading, error,} = useFetch ("/hostel?featured=true&limit=4");
+  const {data, loading, error} = useFetch ("/hostel?featured=true&limit=4");
 
 
   return (
@@ -19,7 +19,7 @@ const FeaturedProperties = () =>{
       <img className="fpImg" src={fProperty_1} alt=""/>
       <span className="fpName">{item.name}</span>
       <span className="fpCity">{item.city}</span>
-      <span className="fpPrice">Starting from KSH {item.CheapestPrice}</span>
+      <span className="fpPrice">Starting from KSH {item.CheapestPrice} <small>per night</small></span>
     { item.rating && <div className="fpRating">
         <button>{item.rating}</button>
         <span>Excellent</span>
