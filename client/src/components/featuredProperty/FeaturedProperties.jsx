@@ -1,53 +1,34 @@
 import "./featuredProperties.css";
+import useFetch from "../../hooks/useFetch";
 
 const fProperty_1 = require('../img/fProperty1.jpg');
 
 const FeaturedProperties = () =>{
+
+  const {data, loading, error,} = useFetch ("/hostel?featured=true&limit=4");
+
+
   return (
     <div className="fp">
-    <div className="fpItem">
-      <img className="fpImg" src={fProperty_1} alt=""/>
-      <span className="fpName">Aparthostel Stare Miasto</span>
-      <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from KSH 10,000</span>
-      <div className="fpRating">
-        <button>8.9</button>
-        <span>Excellent</span>
-      </div>
-      </div>
 
-      <div className="fpItem">
+    {loading ? "loading" : 
+    <>
+    { data.map((item) =>(
+      
+      <div className="fpItem" key={item._id}>
       <img className="fpImg" src={fProperty_1} alt=""/>
-      <span className="fpName">Aparthostel Stare Miasto</span>
-      <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from KSH 10,000</span>
-      <div className="fpRating">
-        <button>8.9</button>
+      <span className="fpName">{item.name}</span>
+      <span className="fpCity">{item.city}</span>
+      <span className="fpPrice">Starting from KSH {item.CheapestPrice}</span>
+    { item.rating && <div className="fpRating">
+        <button>{item.rating}</button>
         <span>Excellent</span>
+      </div>}
       </div>
-      </div>
+      ))}
+      </>
+    }
 
-      <div className="fpItem">
-      <img className="fpImg" src={fProperty_1} alt=""/>
-      <span className="fpName">Aparthostel Stare Miasto</span>
-      <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from KSH 10,000</span>
-      <div className="fpRating">
-        <button>8.9</button>
-        <span>Excellent</span>
-      </div>
-      </div>
-
-      <div className="fpItem">
-      <img className="fpImg" src={fProperty_1} alt=""/>
-      <span className="fpName">Aparthostel Stare Miasto</span>
-      <span className="fpCity">Nairobi West</span>
-      <span className="fpPrice">Starting from KSH 10,000</span>
-      <div className="fpRating">
-        <button>8.9</button>
-        <span>Excellent</span>
-      </div>
-      </div>
     </div>
   )
 }
