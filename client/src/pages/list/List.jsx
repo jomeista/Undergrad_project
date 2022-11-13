@@ -28,9 +28,9 @@ const List = () =>{
     reFetch ();
   }
 
-  console.log(location);
   return(
-    <div><Navbar />
+    <div>
+    <Navbar />
     <Header type="list" />
     <div className="listContainer">
       <div className="listWrapper">
@@ -58,23 +58,32 @@ const List = () =>{
             <div className="lsOptions">
             <div className="lsOptionItem">
               <span className="lsOptionText">
-                Min price <small>per month</small>
+                Min price <small>per night</small>
               </span>
-              <input type="number" className="lsOptionInput"/>
+              <input type="number"
+              onChange={(e) => setMin(e.target.value)} 
+              className="lsOptionInput"/>
             </div>
 
             <div className="lsOptionItem">
               <span className="lsOptionText">
-                Max price <small>per month</small>
+                Max price <small>per night</small>
               </span>
-              <input type="number" onChange={e=>setMax(e.target.value)} className="lsOptionInput"/>
+              <input type="number" 
+              onChange={(e)=>setMax(e.target.value)} 
+              className="lsOptionInput"/>
             </div>
 
             <div className="lsOptionItem">
               <span  className="lsOptionText" placeholder={options.room}>
                 room
               </span>
-              <input min={1} type="number" className="lsOptionInput"/>
+              <input
+               min={1}
+                type="number"
+                 className="lsOptionInput"
+                  placeholder={options.room}
+                 />
             </div>
 
           </div>

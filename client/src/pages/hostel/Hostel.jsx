@@ -19,7 +19,7 @@ const Hostel = () =>{
 
   const id = location.pathname.split("/"[2]);
 
-  const {data, loading, error} = useFetch(`/hostels/${id}`);
+  const {data, loading, error} = useFetch(`/hostels/find/${id}`);
 
   const {dates} = useContext(SearchContext);
 
