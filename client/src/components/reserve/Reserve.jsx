@@ -4,6 +4,7 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
+import axios from "axios";
 
 const Reserve = ({setOpen, hostelId}) => {
 
@@ -34,7 +35,7 @@ const Reserve = ({setOpen, hostelId}) => {
 
   const isAvailable = (roomNumber) =>{
     const isFound = roomNumber.unavailableDates.some(date =>
-      alldates.include(new Date(date).getTime())
+      alldates.includes(new Date(date).getTime())
       );
 
       return !isFound
@@ -52,8 +53,19 @@ const Reserve = ({setOpen, hostelId}) => {
       );
   };
 
-  const handleClick = () =>{
-
+  const handleClick = async() =>{
+    try {
+      await Promise.all(selectedRooms.map(roomId=>{
+        const res =axios.put(`/rooms/availability/${roomId}`, {
+          dates:alldates,
+        });
+        return res.data;
+      })
+      );
+      
+    } catch (err) {
+      
+    }
   }
   return (
     <div className="reserve">
@@ -74,6 +86,7 @@ const Reserve = ({setOpen, hostelId}) => {
           </div>
           <div className="rPrice">{item.price}</div>
           </div>
+          <div className="rSelectRooms">
         
             {item.roomNumbers.map(roomNumber =>(
               <div className="room">
@@ -86,6 +99,7 @@ const Reserve = ({setOpen, hostelId}) => {
                />
               </div>
             ))}
+            </div>
           <button className="rButton" onClick={handleClick}>Reserve Now!</button>
      
       </div>
@@ -94,5 +108,7 @@ const Reserve = ({setOpen, hostelId}) => {
     </div>
   )
 }
+
+
 
 export default Reserve
